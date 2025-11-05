@@ -1,0 +1,27 @@
+package com.schedulemanager.dto;
+
+import lombok.Getter;
+
+import java.time.LocalDateTime;
+
+@Getter
+// 일정 생성 응답 dto
+public class CreateScheduleResponseDto {
+    private final Long id;
+    private final String title;
+    private final String content;
+    private final String name;
+    // 비밀번호는 응답에서 제외시키기
+    private final LocalDateTime createdAt;
+    private final LocalDateTime modifiedAt;
+
+    //
+    public CreateScheduleResponseDto(Long id, String title, String content, String name, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.name = name;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
+    }
+}
