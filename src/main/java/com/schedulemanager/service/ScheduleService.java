@@ -5,6 +5,7 @@ import com.schedulemanager.entity.Schedule;
 import com.schedulemanager.repository.ScheduleRepository;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,8 +39,18 @@ public class ScheduleService {
 
     // 일정 전체 조회
     @Transactional(readOnly = true)
-    public List<GetScheduleResponseDto> getALL() {
+    public List<GetScheduleResponseDto> getAll(String name) {  // 작성자명으로 조회하기 위해 getAll() 메서드 생성
         List<Schedule> schedules = scheduleRepository.findAll();
+
+        // 작성자명(name)이 있으면 필터링, 없으면 전체 조회하기
+        if (name == null || name.isEmpty()) {
+            // BaseEntity 안에 있는 "modifiedAt"(수정일 기준)으로 내림차순(DESC) 정렬해서 전체 조회
+            schedules = scheduleRepository.findAll(Sort.by(Sort.Direction.DESC, "modifiedAt"));
+        // 해당 작성자(name)의 일정만 조회
+        } else {
+            schedules = scheduleRepository.findAllByNameOrderByModifiedAtDesc(name);  // 레파지토리 참고
+        }
+
         List<GetScheduleResponseDto> dtos = new ArrayList<>();
 
         for (Schedule schedule : schedules) {

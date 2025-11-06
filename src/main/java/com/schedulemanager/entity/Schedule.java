@@ -15,13 +15,13 @@ public class Schedule extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키(@Id) 값을 자동으로 생성하는 방식
     private Long id;
-    @Column(nullable = false)
+    @Column(length = 30, nullable = false)
     private String title;
-    @Column(nullable = false)
-    private String content;
     @Column(length = 50, nullable = false)
+    private String content;
+    @Column(length = 30, nullable = false)
     private String name;
-    @Column(nullable = false)
+    @Column(length = 20, nullable = false)
     private String password;
 
     // 생성자

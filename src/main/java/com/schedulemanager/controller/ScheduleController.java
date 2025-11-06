@@ -23,8 +23,10 @@ public class ScheduleController {
 
     // 일정 전체 조회(Get)
     @GetMapping("/schedules")
-    public ResponseEntity<List<GetScheduleResponseDto>> getAll() {
-        List<GetScheduleResponseDto> result = scheduleService.getALL();
+    public ResponseEntity<List<GetScheduleResponseDto>> getAll(
+            @RequestParam(required = false) String name // 작성자명
+    ) {
+        List<GetScheduleResponseDto> result = scheduleService.getAll(name);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
@@ -45,6 +47,7 @@ public class ScheduleController {
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
+    // 일정 삭제(Delete)
     @DeleteMapping("schedules/{scheduleId}")
     public ResponseEntity<Void> delete(@PathVariable Long scheduleId) {
         scheduleService.delete(scheduleId);
