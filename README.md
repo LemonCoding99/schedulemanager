@@ -28,6 +28,7 @@
 ### 2) 도전 기능
 |기능|구현내용|
 |----|--------|
+추후 추가예정
 
 
 ## 5. 프로젝트 구조(Project Structure)
@@ -52,6 +53,7 @@ API 명세서에서 확인 가능합니다.
 https://documenter.getpostman.com/view/40951575/2sB3WquLbP
 
 ERD 구조  
-<img width="622" height="343" alt="image" src="https://github.com/user-attachments/assets/0036e82c-3fdb-4ae6-9a8a-9231de3d53a6" />  
+<img width="628" height="332" alt="image" src="https://github.com/user-attachments/assets/eaf7f6b2-349d-409c-8d7f-62eeece43f82" />
+
 
 
